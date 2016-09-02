@@ -1,8 +1,8 @@
 package com.dsa.graphs;
 
-public class GraphDFSApp {
+public class GraphBFSApp {
 	public static void main(String[] args) {
-		GraphDFS graph = new GraphDFS(5);
+		GraphBFS graph = new GraphBFS(5);
 		graph.addVertex('A');
 		graph.addVertex('B');
 		graph.addVertex('C');
@@ -15,7 +15,6 @@ public class GraphDFSApp {
 		graph.addEdge(1, 3);
 		graph.addEdge(3, 4);
 		System.out.println("Visits");
-		graph.dfs();
-		graph.mst();
+		graph.bfs();
 	}
 }

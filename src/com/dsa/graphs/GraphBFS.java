@@ -13,8 +13,8 @@ public class GraphBFS {
 		queue = new QueueX();
 	}
 	
-	public void addVertex(Vertex vertex) {
-		vertices[numVertices++] = vertex;
+	public void addVertex(char v) {
+		vertices[numVertices++] = new Vertex(v);
 	}
 	
 	public void addEdge(int start, int end) {
@@ -27,10 +27,29 @@ public class GraphBFS {
 	}
 	
 	public void bfs() {
-		//TODO
+		vertices[0].wasVisited = true;
+		displayVertex(0);
+		queue.insert(0);
+		int v2;
+		while (!queue.isEmpty()) {
+			int v1 = queue.remove();
+			while ((v2 = getAdjUnvisitedVertex(v1)) != -1) {
+				vertices[v2].wasVisited = true;
+				displayVertex(v2);
+				queue.insert(v2);
+			}
+		}
+		for (int i = 0; i < numVertices; i++) {
+			vertices[i].wasVisited = false;
+		}
 	}
 	
 	public int getAdjUnvisitedVertex(int v) {
-		return 0;
+		for (int i = 0; i < numVertices; i++) {
+			if (adjMatrix[v][i] == 1 && vertices[i].wasVisited == false) {
+				return i;
+			}
+		}
+		return -1;
 	}
 }

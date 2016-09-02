@@ -43,6 +43,30 @@ public class GraphDFS {
 		for (int i = 0; i < numVertices; i++) {
 			vertices[i].wasVisited = false;
 		}
+		System.out.println();
+	}
+	
+	public void mst() {
+		vertices[0].wasVisited = true;
+		stack.push(0);
+		while (!stack.isEmpty()) {
+			int currentVertex = stack.peek();
+			int uv = getAdjUnvisitedVertex(currentVertex);
+			if (uv == -1) {
+				stack.peek();
+			} else {
+				vertices[uv].wasVisited = true;
+				stack.push(uv);
+				displayVertex(currentVertex);
+				displayVertex(uv);
+				System.out.print(" ");
+			}
+		}
+		
+		for (int i = 0; i < numVertices; i++) {
+			vertices[i].wasVisited = false;
+		}
+		System.out.println();
 	}
 	
 	public int getAdjUnvisitedVertex(int v) {
